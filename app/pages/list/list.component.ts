@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import * as SocialShare from "nativescript-social-share";
 import { TextField } from 'ui/text-field';
 
 import { Grocery } from "../../shared/grocery/grocery";
@@ -32,6 +33,14 @@ export class ListComponent implements OnInit {
       });
   }
 
+  share() {
+    let listString = this.groceryList
+      .map(grocery => grocery.name)
+      .join(", ")
+      .trim();
+    SocialShare.shareText(listString);
+  }
+
   add() {
     if (this.grocery.trim() === "") {
       alert("Enter a grocery item");
@@ -54,7 +63,7 @@ export class ListComponent implements OnInit {
           okButtonText: "OK"
         });
         this.grocery = "";
-        
+
       }
       )
   }

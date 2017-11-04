@@ -31,6 +31,10 @@ export class LoginComponent implements OnInit {
     }
 
     submit() {
+        if (!this.user.isValidEmail()) {
+            alert("Enter a valid email address.");
+            return;
+        }
         if (this.isLoggingIn) {
             this.login();
         } else {
@@ -58,11 +62,12 @@ export class LoginComponent implements OnInit {
         this.isLoggingIn = !this.isLoggingIn;
         let container = <View>this.container.nativeElement;
         container.animate({
-            translate: { x: 0, y: -40},
+            translate: { x: 0, y: -40 },
             duration: 0
         });
         container.animate({
-            translate: { x: 0, y: 0},
+            translate: { x: 0, y: 0 },
+            backgroundColor: this.isLoggingIn ? new Color("white") : new Color("#301217"),
             duration: 300,
             curve: AnimationCurve.spring
         });
