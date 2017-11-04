@@ -1,5 +1,4 @@
 @import url("~/platform.css");
-
 Page {
     background-color: white;
     font-size: 15;
@@ -8,4 +7,12 @@ Page {
 TextField {
     padding: 10;
     font-size: 13;
+}
+
+.small-spacing {
+    margin: 5;
+}
+
+.medium-spacing {
+    margin: 10;
 }
