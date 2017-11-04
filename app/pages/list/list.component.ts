@@ -67,4 +67,22 @@ export class ListComponent implements OnInit {
       }
       )
   }
+
+  delete(grocery) {
+    this.groceryListService.delete(grocery.id)
+      .subscribe(
+      groceryObject => {
+        alert({
+          message: "Deletion successful.",
+          okButtonText: "OK"
+        });
+        this.groceryList.splice(this.groceryList.indexOf(grocery));
+      },
+      () => {
+        alert({
+          message: "An error occurred while deleting an item.",
+          okButtonText: "OK"
+        });
+      });
+  }
 }
